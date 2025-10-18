@@ -9,7 +9,7 @@ public protocol MiniAppModule {
     /// 模块唯一标识符
     static var moduleID: String { get }
     /// UIKit入口
-    func createInitialViewController(withParameters params: [String: Any]?) -> UIViewController?
+    func createInitialViewController() -> UIViewController?
     /// SwiftUI入口（可选）
-    func createInitialView(withParameters params: [String: Any]?) -> AnyView?
+    func createInitialView() -> AnyView?
 }
