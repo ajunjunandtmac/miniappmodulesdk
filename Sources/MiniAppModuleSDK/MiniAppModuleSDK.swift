@@ -17,7 +17,7 @@ public protocol MiniAppModule {
 }
 
 public class MiniAppModuleCreator {
-    static func createModule(moduleId: String, moduleName: String) -> (any MiniAppModule)? {
+    public static func createModule(moduleId: String, moduleName: String) -> (any MiniAppModule)? {
         guard let ClassType = NSClassFromString(moduleName) as? MiniAppModule.Type else {
             return nil
         }
