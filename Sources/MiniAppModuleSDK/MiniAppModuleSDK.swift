@@ -17,20 +17,8 @@ public protocol MiniAppModule {
 }
 
 public class MiniAppModuleCreator {
-    static let nameSpace: String?  = {
-        let fullClassName = NSStringFromClass(MiniAppModuleCreator.self)
-        guard let nameSpace = fullClassName.components(separatedBy: ".").first else {
-            return nil
-        }
-        return nameSpace
-    }()
-
-    public static func createModule(moduleId: String, moduleName: String) -> (any MiniAppModule)? {
-        guard let nameSpace else {
-            return nil
-        }
-
-        guard let ClassType = NSClassFromString("\(nameSpace).\(moduleName)") as? MiniAppModule.Type else {
+    public static func createModule(moduleId: String, moduleName: String, miniAppName: String) -> (any MiniAppModule)? {
+        guard let ClassType = NSClassFromString("\(miniAppName).\(moduleName)") as? MiniAppModule.Type else {
             return nil
         }
 
