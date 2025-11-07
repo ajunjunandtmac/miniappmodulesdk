@@ -15,3 +15,13 @@ public protocol MiniAppModule {
     /// SwiftUI入口（可选）
     func createInitialView() -> AnyView?
 }
+
+public class MiniAppModuleCreator {
+    static func createModule(moduleId: String, moduleName: String) -> (any MiniAppModule)? {
+        guard let ClassType = NSClassFromString(moduleName) as? MiniAppModule.Type else {
+            return nil
+        }
+
+        return ClassType.getInstance(withModuleId: moduleId)
+    }
+}
